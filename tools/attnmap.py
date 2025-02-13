@@ -25,63 +25,11 @@ except:
 mean = torch.tensor([123.675, 116.28, 103.53]) / 255.0 
 std = torch.tensor([58.395, 57.12, 57.375]) / 255.0
 
+
 def normalize_image(image_tensor):
     mean_tensor = mean.view(1, 3, 1, 1)
     std_tensor = std.view(1, 3, 1, 1)
     return (image_tensor - mean_tensor) / std_tensor
-
-
-def main_worker(cfg):
-    cfg.distributed = False
-    if cfg.launcher == "pytorch":
-        cfg.distributed = True
-        init_dist()
-    cfg.rank, cfg.world_size = get_dist_info()
-
-
-    model = build_model(cfg.model)
-    model = model.cuda()
-
-    if cfg.use_fp16:
-        model = apex.amp.initialize(
-            model, opt_level="O1")
-        for m in model.modules():
-            if hasattr(m, "fp16_enabled"):
-                m.fp16_enabled = True
-    if cfg.distributed:
-        model = MMDistributedDataParallel(model, device_ids=[cfg.rank])
-    model_ema = ExponentialMovingAverage(model, cfg.ema_factor) if cfg.ema else None
-    if cfg.load_from:
-        load_checkpoint(model, model_ema, load_from=cfg.load_from)
-    elif cfg.finetune_from:
-        # hacky way
-        load_pretrained_checkpoint(model, model_ema, cfg.finetune_from, amp=cfg.use_fp16)
-
-
-
-
-
-def parse_args():
-    parser = argparse.ArgumentParser(description="SeqTR-test")
-    parser.add_argument('config', help='test configuration file path.')
-    parser.add_argument(
-        '--load-from', help='load from the saved .pth checkpoint, only used in validation.')
-    parser.add_argument(
-        '--finetune-from', help='load from the pretrained checkpoint, only used in validation.')
-    parser.add_argument(
-        '--launcher', choices=['none', 'pytorch'], default='none')
-    parser.add_argument(
-        '--cfg-options',
-        nargs='+',
-        action=DictAction,
-        help='override some settings in the used config, the key-value pair '
-        'in xxx=yyy format will be merged into config file. If the value to '
-        'be overwritten is a list, it should be like key="[a,b]" or key=a,b '
-        'It also allows nested list/tuple values, e.g. key="[(a,b),(c,d)]" '
-        'Note that the quotation marks are necessary and that no white space '
-        'is allowed.')
-    args = parser.parse_args()
-    return args
 
 
 def main():
