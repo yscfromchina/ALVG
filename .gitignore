@@ -1,0 +1,11 @@
+data
+*.pyc
+work_dir/
+*.whl
+*.zip
+pretrain_weights
+visualization/
+visualize/
+vis_cross/
+Visualizer-main/
+weights/

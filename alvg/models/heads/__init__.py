@@ -1,0 +1,2 @@
+from .detr_head.detr_head import DETRHead
+from .al_tgqs_detr_head.al_tgqs_detr_head import TextGuidedQuerySelectKDDETRHead
