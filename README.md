@@ -40,7 +40,7 @@ pip install -e .
 
 ### Data Preparation
 
-For the construction of the dataset that support REC tasks, please refer to the [SimVG](https://github.com/d1997/SimVG) repository. For the construction of the dataset that support both REC and RES tasks we haven't released these yet, out of the review strategy. 
+For the construction of the dataset that support REC tasks, please refer to the [SimVG](https://github.com/Dmmm1997/SimVG) repository. For the construction of the dataset that support both REC and RES tasks we haven't released these yet, out of the review strategy. 
 
 
 The data structure should look like the following:
@@ -99,5 +99,5 @@ python tools/test.py --config configs/single/ViT-base/[DATASET_NAME]/[DATASET_NA
 ```
 
 ## Acknowledgements
-This codebase is partially based on [SimVG](https://github.com/d1997/SimVG)
+This codebase is partially based on [SimVG](https://github.com/Dmmm1997/SimVG)
 
