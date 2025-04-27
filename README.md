@@ -98,4 +98,5 @@ bash tools/dist_train.sh configs/mix/ViT-large/pretrian-mixed.py 8
 python tools/test.py --config configs/single/ViT-base/[DATASET_NAME]/[DATASET_NAME].py --load-from <pth>
 ```
 
+This codebase is partially based on [SimVG](https://github.com/Dmmm1997/SimVG).
 
