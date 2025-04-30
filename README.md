@@ -10,7 +10,7 @@ Visual grounding is the task of locating the relevant region in an image based o
 
 
 <!-- ![motivation](./docs/motivation.pdf)   -->
-![](./docs/model.png)  
+![](./docs/framework.png)  
 
 
 
