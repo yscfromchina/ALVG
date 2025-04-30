@@ -40,7 +40,7 @@ pip install -e .
 
 ### Data Preparation
 
-For the construction of the dataset that support REC tasks, please refer to the [SimVG](https://github.com/Dmmm1997/SimVG) repository. For the construction of the dataset that support both REC and RES tasks we haven't released these yet, out of the review strategy. 
+For the construction of the dataset that support REC tasks, please refer to the [SimVG](https://github.com/Dmmm1997/SimVG) repository. For the construction of the annotations that support both REC and RES tasks, you can download from [here](https://drive.google.com/drive/folders/10oOBLqfuWLwbnv7W9S0TMAdFHK7rhS_4?usp=drive_link). 
 
 
 The data structure should look like the following:
@@ -84,6 +84,8 @@ ALVG
 ├── pretrain_weights
 └── tools
 ```
+
+Some weights and logs can be found at [here](https://drive.google.com/drive/folders/10bfDe7lB_E45URAblvyKyxPBnhsK1Pus?usp=drive_link)
 
 ## Training
 ```
